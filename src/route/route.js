@@ -3,7 +3,7 @@ const router = express.Router();
 const userController = require("../controller/userController")
 const productController = require("../controller/productController")
 const CartController = require("../controller/cartController")
-
+const orderController = require("../controller/orderController")
 const middleware = require("../middleware/auth.js")
 
 
@@ -27,7 +27,13 @@ router.put("/users/:userId/cart",middleware.auth, CartController.updateCart);
 router.get("/users/:userId/cart",middleware.auth, CartController.getCart);
 router.delete("/users/:userId/cart",middleware.auth, CartController.deleteCart);
 
-//-------------------------------------------------------------------------------------
+//---------------------------------orderModel----------------------------------------------------//
+router.post("/users/:userId/orders",middleware.auth,orderController.createOrder);
+
+router.put("/users/:userId/orders",middleware.auth,orderController.updateOrder);
+
+
+
 
 
 // if api is invalid OR wrong URL

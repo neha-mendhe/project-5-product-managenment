@@ -26,7 +26,7 @@ const createCart = async (req, res) => {
         //====================================authorization=================================================================
 
         let TokenuserId = req.TokenUserId
-        if (TokenuserId !== paramsuserId) {
+        if (TokenuserId != paramsuserId) {
             return res.status(400).send({ status: false, message: "you are not authorized" });
         }
         //======================================================================================================================
@@ -392,7 +392,7 @@ const deleteCart = async function (req, res) {
         }
         let cart = { totalItems: 0, totalPrice: 0, items: [] }
         const deleteCart = await cartModel.findOneAndUpdate({ userId: userId }, cart, { new: true })
-        return res.status(204).send({ status: true, message: "cart deleted successfully", data: deleteCart })
+        return res.status(200).send({ status: true, message: "cart deleted successfully", data: deleteCart })
 
 
     }
